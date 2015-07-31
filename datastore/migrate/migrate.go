@@ -38,6 +38,9 @@ CREATE TABLE IF NOT EXISTS hosts (
 const portsTable = `
 CREATE TABLE IF NOT EXISTS ports (
 	id        INTEGER PRIMARY KEY AUTOINCREMENT,
-	port      INTEGER NOT NULL
+	port      INTEGER NOT NULL,
+	host      INTEGER NOT NULL,
+
+	FOREIGN KEY (host) REFERENCES hosts(id)
 )
 `
