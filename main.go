@@ -38,7 +38,11 @@ func main() {
 	// Connect to the database.
 	db, err := database.Connect(conf.C.DbType, conf.C.DbConn)
 	if err != nil {
-		// TODO: error message
+		vars.log.WithFields(logrus.Fields{
+			"err":     err,
+			"db_type": conf.C.DbType,
+			"db_conn": conf.C.DbConn,
+		}).Error("Could not connect to database")
 		return
 	}
 	vars.db = db
