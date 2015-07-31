@@ -13,5 +13,5 @@ func NewContext(parent context.Context, ds Datastore) context.Context {
 }
 
 func FromContext(c context.Context) Datastore {
-	return c.Value("TKTK").(Datastore)
+	return c.Value(contextKey).(Datastore)
 }
