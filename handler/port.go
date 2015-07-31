@@ -15,7 +15,6 @@ func GetPort(c web.C, w http.ResponseWriter, r *http.Request) {
 	var (
 		ctx   = context.FromC(c)
 		idStr = c.URLParams["port"]
-		ds    = datastore.FromContext(ctx)
 	)
 
 	id, err := strconv.ParseInt(idStr, 10, 64)
@@ -24,7 +23,7 @@ func GetPort(c web.C, w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	port, err := ds.GetPort(id)
+	port, err := datastore.GetPort(ctx, id)
 	if err != nil {
 		w.WriteHeader(http.StatusNotFound)
 		return
