@@ -15,6 +15,7 @@ import (
 	"github.com/andrew-d/flypaper/conf"
 	"github.com/andrew-d/flypaper/datastore"
 	"github.com/andrew-d/flypaper/datastore/database"
+	"github.com/andrew-d/flypaper/log"
 	"github.com/andrew-d/flypaper/middleware"
 	"github.com/andrew-d/flypaper/router"
 )
@@ -31,8 +32,7 @@ func main() {
 	var vars Vars
 
 	// Create logger.
-	// TODO: depending on conf.C.Debug, we can set this to print JSON, etc.
-	vars.log = logrus.New()
+	vars.log = log.NewLogger()
 	vars.log.Info("initializing...")
 
 	// Connect to the database.
@@ -71,11 +71,13 @@ func main() {
 	vars.log.Info("server finished")
 }
 
+// ContextMiddleware will add our variables to the per-request context.
 func ContextMiddleware(vars *Vars) web.MiddlewareType {
 	mfn := func(c *web.C, h http.Handler) http.Handler {
 		fn := func(w http.ResponseWriter, r *http.Request) {
 			ctx := context.Background()
 			ctx = datastore.NewContext(ctx, vars.ds)
+			ctx = log.NewContext(ctx, vars.log)
 
 			// Add the context to the goji web context
 			webcontext.Set(c, ctx)
