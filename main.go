@@ -28,6 +28,13 @@ type Vars struct {
 	log *logrus.Logger
 }
 
+var (
+	// Commit SHA and version for the current build, set by the
+	// compile process.
+	version  string
+	revision string
+)
+
 func main() {
 	var vars Vars
 
