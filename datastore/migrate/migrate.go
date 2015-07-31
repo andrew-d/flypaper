@@ -17,6 +17,7 @@ func (m Migrator) Setup(tx migration.LimitedTx) error {
 	stmts := []string{
 		hostsTable,
 		portsTable,
+		portsTableIndex,
 	}
 
 	for _, stmt := range stmts {
@@ -30,17 +31,24 @@ func (m Migrator) Setup(tx migration.LimitedTx) error {
 
 const hostsTable = `
 CREATE TABLE IF NOT EXISTS hosts (
-	id        INTEGER PRIMARY KEY AUTOINCREMENT,
-	ipaddress TEXT NOT NULL,
-	hostname  TEXT
+	 id        INTEGER PRIMARY KEY AUTOINCREMENT
+	,ipaddress TEXT NOT NULL
+	,hostname  TEXT
+
+	,UNIQUE(ipaddress)
 )
 `
 const portsTable = `
 CREATE TABLE IF NOT EXISTS ports (
-	id        INTEGER PRIMARY KEY AUTOINCREMENT,
-	port      INTEGER NOT NULL,
-	host      INTEGER NOT NULL,
+	 id        INTEGER PRIMARY KEY AUTOINCREMENT
+	,port      INTEGER NOT NULL
+	,host      INTEGER NOT NULL
 
-	FOREIGN KEY (host) REFERENCES hosts(id)
+	,FOREIGN KEY (host) REFERENCES hosts(id)
+	,UNIQUE(host, port)
 )
+`
+
+const portsTableIndex = `
+CREATE INDEX IF NOT EXISTS port_idx ON ports(port)
 `
