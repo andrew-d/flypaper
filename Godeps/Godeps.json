@@ -1,0 +1,40 @@
+{
+	"ImportPath": "github.com/andrew-d/flypaper",
+	"GoVersion": "go1.4.2",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/BurntSushi/migration",
+			"Rev": "c45b897f13350786ccaf2b7403b92b1c7ad85844"
+		},
+		{
+			"ImportPath": "github.com/goji/context",
+			"Rev": "cc5d214cefa9d50beb2cdbf2344eb8c4bd14709b"
+		},
+		{
+			"ImportPath": "github.com/jmoiron/sqlx",
+			"Comment": "sqlx-v1.1-18-g56b62f2",
+			"Rev": "56b62f29e9936b8fc0db14ed01297f88ba518333"
+		},
+		{
+			"ImportPath": "github.com/tylerb/graceful",
+			"Comment": "v1.2.1",
+			"Rev": "ac9ebe4f1ee151ac1eeeaef32957085cba64d508"
+		},
+		{
+			"ImportPath": "github.com/zenazn/goji/web",
+			"Comment": "v0.9.0-27-g4faf9df",
+			"Rev": "4faf9dfc1c88f0858e889b2d6903b4c4dbca11af"
+		},
+		{
+			"ImportPath": "golang.org/x/net/context",
+			"Rev": "51854aba4682903632d14998d47781fe34e62a02"
+		},
+		{
+			"ImportPath": "golang.org/x/net/netutil",
+			"Rev": "51854aba4682903632d14998d47781fe34e62a02"
+		}
+	]
+}
