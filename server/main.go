@@ -12,12 +12,12 @@ import (
 	"github.com/zenazn/goji/web"
 	"golang.org/x/net/context"
 
-	"github.com/andrew-d/flypaper/conf"
-	"github.com/andrew-d/flypaper/datastore"
-	"github.com/andrew-d/flypaper/datastore/database"
-	"github.com/andrew-d/flypaper/log"
-	"github.com/andrew-d/flypaper/middleware"
-	"github.com/andrew-d/flypaper/router"
+	"github.com/andrew-d/flypaper/server/conf"
+	"github.com/andrew-d/flypaper/server/datastore"
+	"github.com/andrew-d/flypaper/server/datastore/database"
+	"github.com/andrew-d/flypaper/server/log"
+	"github.com/andrew-d/flypaper/server/middleware"
+	"github.com/andrew-d/flypaper/server/router"
 )
 
 // Generic structure that holds all created things - database connection,

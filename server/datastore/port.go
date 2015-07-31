@@ -3,7 +3,7 @@ package datastore
 import (
 	"golang.org/x/net/context"
 
-	"github.com/andrew-d/flypaper/model"
+	"github.com/andrew-d/flypaper/server/model"
 )
 
 type PortStore interface {

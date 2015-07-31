@@ -4,8 +4,8 @@ import (
 	"github.com/BurntSushi/migration"
 	"github.com/jmoiron/sqlx"
 
-	"github.com/andrew-d/flypaper/datastore"
-	"github.com/andrew-d/flypaper/datastore/migrate"
+	"github.com/andrew-d/flypaper/server/datastore"
+	"github.com/andrew-d/flypaper/server/datastore/migrate"
 
 	_ "github.com/go-sql-driver/mysql"
 	_ "github.com/lib/pq"

@@ -8,9 +8,13 @@ import (
 	"github.com/goji/context"
 	"github.com/zenazn/goji/web"
 
-	"github.com/andrew-d/flypaper/datastore"
+	"github.com/andrew-d/flypaper/server/datastore"
 )
 
+// GetPort accepts a request to retrieve information about a particular port.
+//
+//     GET /api/ports/:port
+//
 func GetPort(c web.C, w http.ResponseWriter, r *http.Request) {
 	var (
 		ctx   = context.FromC(c)

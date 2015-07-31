@@ -3,7 +3,7 @@ package database
 import (
 	"github.com/jmoiron/sqlx"
 
-	"github.com/andrew-d/flypaper/model"
+	"github.com/andrew-d/flypaper/server/model"
 )
 
 type PortStore struct {

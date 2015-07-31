@@ -8,7 +8,7 @@ build:
 		-o flypaper \
 		-v \
 		-ldflags "-X main.revision $(SHA) -X main.version $(VERSION)" \
-		.
+		./server
 
 clean:
 	$(RM) ./flypaper

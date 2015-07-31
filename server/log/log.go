@@ -4,7 +4,7 @@ import (
 	"github.com/Sirupsen/logrus"
 	"golang.org/x/net/context"
 
-	"github.com/andrew-d/flypaper/conf"
+	"github.com/andrew-d/flypaper/server/conf"
 )
 
 type private struct{}
