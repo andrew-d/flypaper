@@ -10,6 +10,15 @@
 			"Rev": "c45b897f13350786ccaf2b7403b92b1c7ad85844"
 		},
 		{
+			"ImportPath": "github.com/Sirupsen/logrus",
+			"Comment": "v0.8.6-1-g8bca266",
+			"Rev": "8bca2664072173a3c71db4c28ca8d304079b1787"
+		},
+		{
+			"ImportPath": "github.com/andrew-d/webhelpers",
+			"Rev": "f2f7c79c80188345d7893275922ba2e26789057d"
+		},
+		{
 			"ImportPath": "github.com/go-sql-driver/mysql",
 			"Comment": "go1",
 			"Rev": "9a7aa3606b82e2081a13a008ada88dfdb96c20fd"
