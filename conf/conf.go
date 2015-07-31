@@ -37,7 +37,7 @@ func init() {
 	C.Debug = false
 	C.WebHost = "0.0.0.0"
 	C.WebPort = 7000
-	C.DbType = "sqlite"
+	C.DbType = "sqlite3"
 	C.DbConn = ":memory:"
 
 	// Generate a random session secret.
