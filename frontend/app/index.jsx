@@ -5,12 +5,12 @@ import 'html5shiv/dist/html5shiv-printshiv';
 import 'babel/polyfill';
 
 import React from 'react';
-import Router from 'react-router';
+import ReactDOM from 'react-dom';
 
 // Import vendor styles here.
 import 'bootstrap/dist/css/bootstrap.css';
+import 'font-awesome/css/font-awesome.css';
 
-import routes from './routes';
-Router.run(routes, Router.HistoryLocation, function(Handler) {
-  React.render(<Handler />, document.body);
-});
+// Render the app.
+import App from './app';
+ReactDOM.render(<App />, document.getElementById('app'));
