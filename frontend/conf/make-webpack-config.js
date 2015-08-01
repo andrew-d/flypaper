@@ -86,8 +86,14 @@ function buildJavascriptConfig(config, opts) {
   // 1. Build the options for Babel
   // --------------------------------------------------
   var babelLoaderOptions = [
-    // static foo = 'bar' in classes
+    // `static foo = 'bar'` in classes
     'optional[]=es7.classProperties',
+
+    // `...foo` params
+    'optional[]=es7.objectRestSpread',
+
+    // Decorator support
+    'optional[]=es7.decorators',
 
     // TODO: this breaks some things
     // move JSX out of function bodies
