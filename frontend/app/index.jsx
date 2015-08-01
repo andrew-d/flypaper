@@ -12,5 +12,5 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'font-awesome/css/font-awesome.css';
 
 // Render the app.
-import App from './app';
-ReactDOM.render(<App />, document.getElementById('app'));
+import Root from './Root';
+ReactDOM.render(<Root />, document.getElementById('app'));

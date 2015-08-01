@@ -40,10 +40,9 @@ const store = finalCreateStore(composedReducers, state);
 
 
 // The main application class.
-export default class App extends React.Component {
+const history = new HashHistory();
+export default class Root extends React.Component {
   render() {
-    const history = HashHistory;
-
     return (
       <Provider store={store}>
         {renderRoutes.bind(null, history)}

@@ -1,5 +1,4 @@
 import React from 'react';
-import { RouteHandler } from 'react-router';
 /*
 import { Nav, Navbar } from 'react-bootstrap';
 import NavItemLink from '../utils/NavItemLink';
@@ -21,11 +20,11 @@ export default class App extends React.Component {
             </NavItemLink>
           </Nav>
         </Navbar>
+        */}
 
         <div className='container-fluid'>
-          <RouteHandler />
+			{this.props.children}
         </div>
-        */}
       </div>
     );
   }

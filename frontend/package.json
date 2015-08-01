@@ -23,7 +23,7 @@
     "immutable": "^3.6.2",
     "lodash-node": "^3.3.0",
     "react": "0.14.0-beta1",
-    "react-dom": "^0.1.0",
+    "react-dom": "0.14.0-beta1",
     "react-redux": "^0.2.2",
     "react-router": "1.0.0-beta3",
     "redux": "1.0.0-rc",

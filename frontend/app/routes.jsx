@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, DefaultRoute } from 'react-router';
+import { Redirect, Route } from 'react-router';
 
 // Require routes
 import About from './pages/About';
@@ -7,15 +7,17 @@ import App from './pages/App';
 import Home from './pages/Home';
 
 
-const Routes = (
-  <Route handler={App} path='/'>
+const routes = (
+  <Route component={App} path='/'>
     {/* Introduction page */}
-    <DefaultRoute name='index' handler={Home} />
+    <Route path='index' component={Home} />
 
     {/* About page */}
-    <Route name='about' handler={About} />
+    <Route path='about' component={About} />
+
+	<Redirect from='/' to='/index' />
   </Route>
 );
 
 
-export default Routes;
+export default routes;
