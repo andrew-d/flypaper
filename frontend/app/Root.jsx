@@ -1,6 +1,5 @@
 import React from 'react';
 
-import HashHistory from 'react-router/lib/HashHistory';
 import { Router } from 'react-router';
 
 import { applyMiddleware, createStore, combineReducers, compose } from 'redux';
@@ -40,12 +39,15 @@ const store = finalCreateStore(composedReducers, state);
 
 
 // The main application class.
-const history = new HashHistory();
 export default class Root extends React.Component {
+  static propTypes = {
+    history: React.PropTypes.object.isRequired,
+  }
+
   render() {
     return (
       <Provider store={store}>
-        {renderRoutes.bind(null, history)}
+        {renderRoutes.bind(null, this.props.history)}
       </Provider>
     );
   }

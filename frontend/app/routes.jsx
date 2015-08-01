@@ -8,14 +8,12 @@ import Home from './pages/Home';
 
 
 const routes = (
-  <Route component={App} path='/'>
+  <Route component={App}>
     {/* Introduction page */}
-    <Route path='index' component={Home} />
+    <Route path='/' component={Home} />
 
     {/* About page */}
-    <Route path='about' component={About} />
-
-	<Redirect from='/' to='/index' />
+    <Route path='/about' component={About} />
   </Route>
 );
 
