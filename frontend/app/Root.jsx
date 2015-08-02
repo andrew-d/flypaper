@@ -8,6 +8,8 @@ import thunk from 'redux-thunk';
 import { loggerMiddleware } from './middleware';
 import { promiseMiddleware } from './utils/redux';
 
+import * as stores from './stores';
+
 
 // Create Redux
 let middleware = [thunk, promiseMiddleware];
@@ -15,12 +17,12 @@ let middleware = [thunk, promiseMiddleware];
 // In production, we want to use just the middleware.
 // In development, we want to use some store enhancers from redux-devtools.
 // UglifyJS will eliminate the dead code depending on the build environment.
-let finalCreateStore;
+let createStoreWithMiddleware;
 
 if (process.env.NODE_ENV === 'production') {
-  finalCreateStore = applyMiddleware(middleware)(createStore);
+  createStoreWithMiddleware = applyMiddleware(middleware)(createStore);
 } else {
-  finalCreateStore = compose(
+  createStoreWithMiddleware = compose(
     applyMiddleware(middleware),
     require('redux-devtools').devTools(),
     require('redux-devtools').persistState(
@@ -31,11 +33,10 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Build reducers.
-const composedReducers = combineReducers([] /* reducers */);
+const reducer = combineReducers(stores);
 
 // Build final store.
-const state = {};
-const store = finalCreateStore(composedReducers, state);
+const store = createStoreWithMiddleware(reducer);
 
 
 // The main application class.
@@ -56,9 +57,25 @@ export default class Root extends React.Component {
 
 import routes from './routes';
 function renderRoutes(history) {
-  return (
+  let children = [
     <Router history={history}>
       {routes}
     </Router>
+  ];
+
+  if (process.env.NODE_ENV !== 'production') {
+    const { DevTools, DebugPanel, LogMonitor } = require('redux-devtools/lib/react');
+
+    children.push(
+      <DebugPanel top right bottom key="debugPanel" style={{zIndex: 9999}}>
+        <DevTools store={store} monitor={LogMonitor}/>
+      </DebugPanel>
+    );
+  }
+
+  return (
+    <div>
+      {children}
+    </div>
   );
 }

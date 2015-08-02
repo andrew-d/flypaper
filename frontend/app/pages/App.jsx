@@ -23,7 +23,7 @@ export default class App extends React.Component {
         </Navbar>
 
         <div className='container-fluid'>
-			{this.props.children}
+          {this.props.children}
         </div>
       </div>
     );
