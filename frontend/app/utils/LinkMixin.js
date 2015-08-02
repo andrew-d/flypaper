@@ -20,7 +20,7 @@ export default {
     onClick: React.PropTypes.func
   },
   contextTypes: {
-    router: React.PropTypes.func.isRequired
+    router: () => React.PropTypes.func.isRequired
   },
 
   getDefaultProps() {
