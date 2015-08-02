@@ -44,10 +44,12 @@ func MustConnect(driver, conn string) *sqlx.DB {
 
 func NewDatastore(db *sqlx.DB) datastore.Datastore {
 	return struct {
-		*PortStore
+		*RegionStore
 		*HostStore
+		*PortStore
 	}{
-		NewPortStore(db),
+		NewRegionStore(db),
 		NewHostStore(db),
+		NewPortStore(db),
 	}
 }

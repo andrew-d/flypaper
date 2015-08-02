@@ -51,7 +51,7 @@ func PostHost(c web.C, w http.ResponseWriter, r *http.Request) {
 	// Unmarshal the host from the payload
 	defer r.Body.Close()
 	in := struct {
-		IpAddress *string `json:"ipaddress"`
+		IpAddress string  `json:"ipaddress"`
 		Hostname  *string `json:"hostname"`
 		Region    *int64  `json:"region"`
 	}{}
@@ -63,12 +63,12 @@ func PostHost(c web.C, w http.ResponseWriter, r *http.Request) {
 	// Create our 'normal' model.
 	host := new(model.Host)
 
-	if in.IpAddress == nil {
+	if len(in.IpAddress) < 1 {
 		http.Error(w, "no IP address given", http.StatusBadRequest)
 		return
 	}
 
-	host.IpAddress = *in.IpAddress
+	host.IpAddress = in.IpAddress
 
 	if in.Hostname != nil {
 		host.Hostname.Valid = true

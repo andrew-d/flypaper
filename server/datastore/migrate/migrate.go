@@ -32,8 +32,10 @@ func (m Migrator) Setup(tx migration.LimitedTx) error {
 
 const regionsTable = `
 CREATE TABLE IF NOT EXISTS regions (
-	 id        INTEGER PRIMARY KEY AUTOINCREMENT
-	,name      TEXT NOT NULL
+	 id         INTEGER PRIMARY KEY AUTOINCREMENT
+	,name       TEXT NOT NULL
+	,test_start INTEGER
+	,test_end   INTEGER
 
 	,UNIQUE(name)
 )

@@ -1,6 +1,7 @@
 package datastore
 
 type Datastore interface {
-	PortStore
+	RegionStore
 	HostStore
+	PortStore
 }
