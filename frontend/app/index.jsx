@@ -3,6 +3,7 @@ import 'ie8';
 import 'html5shiv/dist/html5shiv';
 import 'html5shiv/dist/html5shiv-printshiv';
 import 'babel/polyfill';
+import 'isomorphic-fetch';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
