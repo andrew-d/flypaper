@@ -15,6 +15,7 @@ func (m Migrator) rebind(s string) string {
 
 func (m Migrator) Setup(tx migration.LimitedTx) error {
 	stmts := []string{
+		regionsTable,
 		hostsTable,
 		portsTable,
 		portsTableIndex,
@@ -29,12 +30,23 @@ func (m Migrator) Setup(tx migration.LimitedTx) error {
 	return nil
 }
 
+const regionsTable = `
+CREATE TABLE IF NOT EXISTS regions (
+	 id        INTEGER PRIMARY KEY AUTOINCREMENT
+	,name      TEXT NOT NULL
+
+	,UNIQUE(name)
+)
+`
+
 const hostsTable = `
 CREATE TABLE IF NOT EXISTS hosts (
 	 id        INTEGER PRIMARY KEY AUTOINCREMENT
 	,ipaddress TEXT NOT NULL
 	,hostname  TEXT
+	,region    INTEGER
 
+	,FOREIGN KEY (region) REFERENCES regions(id)
 	,UNIQUE(ipaddress)
 )
 `
