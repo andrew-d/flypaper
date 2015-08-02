@@ -8,8 +8,8 @@ const initialState = {
 
 const actionsMap = {
   [constants.FETCH_PORT]: (state, action) => ({
-	...state,
-	[action.port.id]: action.port,
+    ...state,
+    [action.port.id]: action.port,
   }),
 };
 
