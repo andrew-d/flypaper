@@ -60,14 +60,18 @@ func PostRegion(c web.C, w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Create our 'normal' model.
-	region := new(model.Region)
-
+	// Validate input
 	if len(in.Name) < 1 {
 		http.Error(w, "no name given", http.StatusBadRequest)
 		return
 	}
+	if (in.TestStart != nil) != (in.TestEnd != nil) {
+		http.Error(w, "if a test start or end is given, both must be provided", http.StatusBadRequest)
+		return
+	}
 
+	// Create our 'normal' model.
+	region := new(model.Region)
 	region.Name = in.Name
 
 	if in.TestStart != nil {

@@ -60,14 +60,13 @@ func PostHost(c web.C, w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Create our 'normal' model.
-	host := new(model.Host)
-
 	if len(in.IpAddress) < 1 {
 		http.Error(w, "no IP address given", http.StatusBadRequest)
 		return
 	}
 
+	// Create our 'normal' model.
+	host := new(model.Host)
 	host.IpAddress = in.IpAddress
 
 	if in.Hostname != nil {
