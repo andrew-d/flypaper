@@ -16,7 +16,7 @@ func NewPortStore(db *sqlx.DB) *PortStore {
 
 func (s *PortStore) GetPort(id int64) (*model.Port, error) {
 	port := &model.Port{}
-	err := s.db.Get(&port, s.db.Rebind(portGetQuery), id)
+	err := s.db.Get(port, s.db.Rebind(portGetQuery), id)
 	return port, err
 }
 
