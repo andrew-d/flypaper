@@ -20,6 +20,7 @@ func Connect(driver, conn string) (*sqlx.DB, error) {
 
 	migrations := []migration.Migrator{
 		migrator.Setup,
+		migrator.DefaultRegion,
 	}
 
 	db, err := migration.Open(driver, conn, migrations)

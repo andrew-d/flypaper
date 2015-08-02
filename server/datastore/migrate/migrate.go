@@ -13,6 +13,7 @@ func (m Migrator) rebind(s string) string {
 	return sqlx.Rebind(sqlx.BindType(m.DbType), s)
 }
 
+// Setup will create all necessary tables and indexes in the database.
 func (m Migrator) Setup(tx migration.LimitedTx) error {
 	stmts := []string{
 		regionsTable,
@@ -28,6 +29,16 @@ func (m Migrator) Setup(tx migration.LimitedTx) error {
 	}
 
 	return nil
+}
+
+// DefaultRegion will insert a default region into the database with the
+// name "default", no start, and no end time.
+func (m Migrator) DefaultRegion(tx migration.LimitedTx) error {
+	_, err := tx.Exec(
+		`INSERT INTO regions(name) VALUES(?)`,
+		"default",
+	)
+	return err
 }
 
 const regionsTable = `
