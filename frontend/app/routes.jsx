@@ -9,11 +9,13 @@ import Home from './pages/Home';
 
 const routes = (
   <Route component={App}>
-    {/* Introduction page */}
-    <Route path='/' component={Home} />
+    {/* Home page */}
+    <Route path='/home' component={Home} />
 
     {/* About page */}
     <Route path='/about' component={About} />
+
+    <Redirect from='/' to='/home' />
   </Route>
 );
 

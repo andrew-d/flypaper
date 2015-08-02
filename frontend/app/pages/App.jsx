@@ -11,9 +11,9 @@ export default class App extends React.Component {
   render() {
     return (
       <div className='page-wrapper'>
-        <Navbar fluid={true} staticTop={true} brand='Template'>
+        <Navbar fluid={true} staticTop={true} brand='Flypaper'>
           <Nav>
-            <NavItemLink to='/'>
+            <NavItemLink to='/home'>
               Home
             </NavItemLink>
             <NavItemLink to='/about'>
