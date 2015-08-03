@@ -58,7 +58,7 @@ export default class Root extends React.Component {
 import routes from './routes';
 function renderRoutes(history) {
   let children = [
-    <Router history={history}>
+    <Router history={history} key="router">
       {routes}
     </Router>
   ];
