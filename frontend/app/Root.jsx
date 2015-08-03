@@ -66,8 +66,13 @@ function renderRoutes(history) {
   if (process.env.NODE_ENV !== 'production') {
     const { DevTools, DebugPanel, LogMonitor } = require('redux-devtools/lib/react');
 
+    // We use this to reset the z-index of the component so it shows 'over' the
+    // navbar.
+    const getDefaultStyle = require('redux-devtools/lib/react/DebugPanel').getDefaultStyle;
+    const getStyle = (props) => Object.assign({}, getDefaultStyle(props), {zIndex: 9999});
+
     children.push(
-      <DebugPanel top right bottom key="debugPanel" style={{zIndex: 9999}}>
+      <DebugPanel top right bottom key="debugPanel" getStyle={getStyle}>
         <DevTools store={store} monitor={LogMonitor}/>
       </DebugPanel>
     );
