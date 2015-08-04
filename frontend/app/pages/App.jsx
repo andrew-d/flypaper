@@ -16,6 +16,9 @@ export default class App extends React.Component {
             <NavItemLink to='/home'>
               Home
             </NavItemLink>
+            <NavItemLink to='/regions'>
+              Regions
+            </NavItemLink>
             <NavItemLink to='/about'>
               About
             </NavItemLink>

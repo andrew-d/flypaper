@@ -1,13 +1,22 @@
 /*global fetch */
+import { checkStatus } from './util';
 
 export default {
   fetchPort(id) {
     return fetch(`/api/ports/${port}`)
-            .then(res => res.json());
+           .then(checkStatus)
+           .then(res => res.json());
   },
 
-  fetchPortForHost(host) {
+  fetchPorts() {
+    return fetch(`/api/ports`)
+           .then(checkStatus)
+           .then(res => res.json());
+  },
+
+  fetchPortsForHost(host) {
     return fetch(`/api/hosts/${host}/ports`)
-            .then(res => res.json());
+           .then(checkStatus)
+           .then(res => res.json());
   },
 }

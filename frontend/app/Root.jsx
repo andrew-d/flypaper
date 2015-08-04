@@ -4,15 +4,10 @@ import { Router } from 'react-router';
 
 import { applyMiddleware, createStore, combineReducers, compose } from 'redux';
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
-import { loggerMiddleware } from './middleware';
-import { promiseMiddleware } from './utils/redux';
+import thunkMiddleware from 'redux-thunk';
 
 import * as stores from './stores';
 
-
-// Create Redux
-let middleware = [thunk, promiseMiddleware];
 
 // In production, we want to use just the middleware.
 // In development, we want to use some store enhancers from redux-devtools.
@@ -20,10 +15,12 @@ let middleware = [thunk, promiseMiddleware];
 let createStoreWithMiddleware;
 
 if (process.env.NODE_ENV === 'production') {
-  createStoreWithMiddleware = applyMiddleware(middleware)(createStore);
+  createStoreWithMiddleware = applyMiddleware(
+    thunkMiddleware
+  )(createStore);
 } else {
   createStoreWithMiddleware = compose(
-    applyMiddleware(middleware),
+    applyMiddleware(thunkMiddleware),
     require('redux-devtools').devTools(),
     require('redux-devtools').persistState(
       window.location.href.match(/[?&]debug_session=([^&]+)\b/)
@@ -36,7 +33,7 @@ if (process.env.NODE_ENV === 'production') {
 const reducer = combineReducers(stores);
 
 // Build final store.
-const store = createStoreWithMiddleware(reducer);
+const store = createStoreWithMiddleware(reducer, {});
 
 
 // The main application class.
@@ -48,7 +45,7 @@ export default class Root extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        {renderRoutes.bind(null, this.props.history)}
+        {() => renderRoutes(this.props.history)}
       </Provider>
     );
   }

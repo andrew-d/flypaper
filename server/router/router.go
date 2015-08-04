@@ -9,8 +9,10 @@ import (
 func New() *web.Mux {
 	mux := web.New()
 
-	mux.Get("/api/regions/:region", handler.GetRegion)
+	mux.Get("/api/regions", handler.ListRegions)
 	mux.Post("/api/regions", handler.PostRegion)
+	mux.Get("/api/regions/:region", handler.GetRegion)
+	mux.Delete("/api/regions/:region", handler.DeleteRegion)
 
 	mux.Get("/api/hosts/:host", handler.GetHost)
 	mux.Post("/api/hosts", handler.PostHost)

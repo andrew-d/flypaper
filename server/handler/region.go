@@ -13,6 +13,27 @@ import (
 	"github.com/andrew-d/flypaper/server/model"
 )
 
+// ListRegions accepts a request to retrieve a list of regions.
+//
+//     GET /api/regions
+//
+func ListRegions(c web.C, w http.ResponseWriter, r *http.Request) {
+	var (
+		ctx    = context.FromC(c)
+		limit  = ToLimit(r)
+		offset = ToOffset(r)
+	)
+
+	regions, err := datastore.ListRegions(ctx, limit, offset)
+	if err != nil {
+		log.FromContext(ctx).WithField("err", err).Error("Error listing regions")
+		w.WriteHeader(http.StatusNotFound)
+		return
+	}
+
+	json.NewEncoder(w).Encode(regions)
+}
+
 // GetRegion accepts a request to retrieve information about a particular region.
 //
 //     GET /api/regions/:region
@@ -37,6 +58,32 @@ func GetRegion(c web.C, w http.ResponseWriter, r *http.Request) {
 	}
 
 	json.NewEncoder(w).Encode(region)
+}
+
+// DeleteRegion accepts a request to delete a region.
+//
+//     DELETE /api/regions/:region
+//
+func DeleteRegion(c web.C, w http.ResponseWriter, r *http.Request) {
+	var (
+		ctx   = context.FromC(c)
+		idStr = c.URLParams["region"]
+	)
+
+	id, err := strconv.ParseInt(idStr, 10, 64)
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
+	err = datastore.DeleteRegion(ctx, id)
+	if err != nil {
+		log.FromContext(ctx).WithField("err", err).Error("Error getting region")
+		w.WriteHeader(http.StatusNotFound)
+		return
+	}
+
+	w.WriteHeader(http.StatusNoContent)
 }
 
 // PostRegion accepts a request to add a new region.
