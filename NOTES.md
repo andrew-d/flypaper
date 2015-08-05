@@ -26,3 +26,13 @@
 - Worker:
 	- A host to SSH to
 	- Authentication options (user, key/password, sudo true/false)
+  - NOTE: can also use a SOCKS proxy - maybe have a seperate configuration for this?
+
+
+# Checks
+
+- SSL check
+  - Send raw SSL handshake bytes to server, can be done from within Go
+- Hostname checks
+- Attempt to retrieve hostname from CN (etc.) of any SSL certificate
+- Cipher checks (e.g. code from `lsciphers`)
