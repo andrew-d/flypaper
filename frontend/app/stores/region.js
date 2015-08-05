@@ -1,9 +1,7 @@
 import * as constants from '../constants';
 
 
-const initialState = {
-  regions: {},
-};
+const initialState = {};
 
 
 const actionsMap = {
@@ -16,7 +14,7 @@ const actionsMap = {
     let newState = state;
 
     for( let region of action.regions ) {
-      newState.regions[region.id] = region;
+      newState[region.id] = region;
     }
 
     return newState;

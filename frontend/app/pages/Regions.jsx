@@ -8,9 +8,8 @@ import TagLink from '../components/TagLink';
 
 
 class Regions extends React.Component {
-  componentDidMount() {
-    let { dispatch } = this.props;
-    dispatch(fetchRegions());
+  componentWillMount() {
+    this.props.dispatch(fetchRegions());
   }
 
   render() {
@@ -91,5 +90,5 @@ class Regions extends React.Component {
 
 
 export default connect(state => ({
-  regions: state.region.regions,
+  regions: state.region,
 }))(Regions);

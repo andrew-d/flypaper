@@ -3,7 +3,7 @@ import { checkStatus } from './util';
 
 export default {
   fetchRegion(id) {
-    return fetch(`/api/regions/${port}`)
+    return fetch(`/api/regions/${id}`)
            .then(checkStatus)
            .then(res => res.json());
   },

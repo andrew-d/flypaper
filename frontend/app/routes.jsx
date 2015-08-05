@@ -5,6 +5,7 @@ import { Redirect, Route } from 'react-router';
 import About from './pages/About';
 import App from './pages/App';
 import Home from './pages/Home';
+import Region from './pages/Region';
 import Regions from './pages/Regions';
 
 
@@ -13,8 +14,9 @@ const routes = (
     {/* Home page */}
     <Route path='home' component={Home} />
 
-    {/* Regions page */}
+    {/* Regions */}
     <Route path='regions' component={Regions} />
+    <Route path='regions/:id' component={Region} />
 
     {/* About page */}
     <Route path='about' component={About} />
