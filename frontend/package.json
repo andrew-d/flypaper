@@ -23,6 +23,7 @@
     "immutable": "^3.6.2",
     "isomorphic-fetch": "^2.1.1",
     "lodash-node": "^3.3.0",
+    "moment": "^2.10.6",
     "react": "0.14.0-beta1",
     "react-bootstrap": "file:vendor/react-bootstrap",
     "react-dom": "0.14.0-beta1",

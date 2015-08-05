@@ -78,7 +78,7 @@ func DeleteRegion(c web.C, w http.ResponseWriter, r *http.Request) {
 
 	err = datastore.DeleteRegion(ctx, id)
 	if err != nil {
-		log.FromContext(ctx).WithField("err", err).Error("Error getting region")
+		log.FromContext(ctx).WithField("err", err).Error("Error deleting region")
 		w.WriteHeader(http.StatusNotFound)
 		return
 	}
