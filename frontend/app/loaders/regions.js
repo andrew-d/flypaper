@@ -15,7 +15,7 @@ export default function(tree) {
     })
     .catch(function(ex) {
       tree.set(['data', 'regions', '$error'], ex);
-    })
+    });
 
   // Fetch the set of regions.
   const regions = tree.get(['data', 'regions']);

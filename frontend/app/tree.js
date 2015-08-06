@@ -1,6 +1,6 @@
 import Baobab from 'baobab';
 
-import RegionsList from './facets/regionsList';
+import regionsList from './facets/regionsList';
 
 
 const tree = new Baobab({
@@ -13,7 +13,7 @@ const tree = new Baobab({
   // The top-level `ui` key contains presentation logic - i.e. displaying the
   // models from `data` in a particular way.
   ui: {
-    $regionsList: RegionsList,
+    $regionsList: regionsList,
   },
 });
 

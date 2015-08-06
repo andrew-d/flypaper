@@ -1,6 +1,7 @@
 import React from 'react';
 import {branch} from 'baobab-react/decorators';
 
+
 @branch((props) => ({
   region: ['data', 'regions', props.routeParams.id],
 }))
