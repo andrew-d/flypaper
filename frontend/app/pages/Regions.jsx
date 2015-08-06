@@ -1,23 +1,31 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import map from 'lodash-node/modern/collection/map';
 import moment from 'moment';
+import {branch} from 'baobab-react/decorators';
 
-import { fetchRegions } from '../actions/region';
 import TagLink from '../components/TagLink';
 
 
-class Regions extends React.Component {
-  componentWillMount() {
-    this.props.dispatch(fetchRegions());
+@branch({
+  regions: ['ui', '$regionsList'],
+})
+export default class Regions extends React.Component {
+  static propTypes = {
+    regions: React.PropTypes.object.isRequired,
   }
 
   render() {
-    return (
-      <div>
-        <h2>Regions</h2>
+    let regionsTable = [];
 
-        <table className='table table-striped' style={{minWidth: '100%'}}>
+    if( this.props.regions.$error ) {
+      regionsTable = [<p>Could not fetch regions: {this.props.regions.$error}</p>];
+    } else {
+      if( this.props.regions.$isLoading ) {
+        regionsTable.push(<h4 key='ll'>Loading...</h4>);
+      }
+
+      regionsTable.push(
+        <table key='rt' className='table table-striped' style={{minWidth: '100%'}}>
           <thead>
             <tr>
               <th>ID</th>
@@ -31,17 +39,27 @@ class Regions extends React.Component {
             {this.renderRegions()}
           </tbody>
         </table>
+      );
+    }
+
+    return (
+      <div>
+        <h2>Regions</h2>
+
+        {regionsTable}
       </div>
     );
   }
 
   renderRegions() {
-    return map(this.props.regions, (region) => {
+    return map(this.props.regions, (region, key) => {
+      if( key[0] === '$' ) return null;
+
       const test_start = region.test_start ?
-        moment(region.test_start).format("dddd, MMMM Do YYYY, h:mm:ss a") :
+        moment(region.test_start).format('dddd, MMMM Do YYYY, h:mm:ss a') :
         '';
       const test_end = region.test_end ?
-        moment(region.test_end).format("dddd, MMMM Do YYYY, h:mm:ss a") :
+        moment(region.test_end).format('dddd, MMMM Do YYYY, h:mm:ss a') :
         '';
 
       return (
@@ -87,8 +105,3 @@ class Regions extends React.Component {
     console.log(`TODO: Would delete region ${id}`);
   }
 }
-
-
-export default connect(state => ({
-  regions: state.region,
-}))(Regions);

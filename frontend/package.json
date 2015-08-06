@@ -16,6 +16,8 @@
   },
   "author": "Andrew Dunham <andrew@du.nham.ca>",
   "dependencies": {
+    "baobab": "2.0.0-dev13",
+    "baobab-react": "1.0.0-dev2",
     "babel": "^5.0.10",
     "font-awesome": "^4.4.0",
     "html5shiv": "^3.7.2",
@@ -27,10 +29,7 @@
     "react": "0.14.0-beta1",
     "react-bootstrap": "file:vendor/react-bootstrap",
     "react-dom": "0.14.0-beta1",
-    "react-redux": "^0.2.2",
     "react-router": "1.0.0-beta3",
-    "redux": "1.0.0-rc",
-    "redux-thunk": "^0.1.0",
     "uniqueid": "^0.1.0"
   },
   "devDependencies": {
@@ -65,7 +64,6 @@
     "nomnom": "^1.8.1",
     "postcss-loader": "^0.5.1",
     "react-hot-loader": "^1.1.4",
-    "redux-devtools": "^0.1.2",
     "sass-loader": "^1.0.2",
     "style-loader": "^0.12.2",
     "url-loader": "^0.5.5",
