@@ -39,3 +39,7 @@ func PostRegion(c context.Context, region *model.Region) error {
 func DeleteRegion(c context.Context, id int64) error {
 	return FromContext(c).DeleteRegion(id)
 }
+
+func UpdateRegion(c context.Context, id int64) error {
+	return FromContext(c).UpdateRegion(id)
+}
