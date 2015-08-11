@@ -42,7 +42,7 @@ func (s *RegionStoreSuite) TestInsertRegion() {
 	r := model.Region{
 		Name: "foo",
 	}
-	err := s.rs.PostRegion(&r)
+	err := s.rs.InsertRegion(&r)
 
 	s.NoError(err)
 	s.NotEqual(0, r.ID)
@@ -52,7 +52,7 @@ func (s *RegionStoreSuite) TestDeleteRegion() {
 	r := model.Region{
 		Name: "foo",
 	}
-	err := s.rs.PostRegion(&r)
+	err := s.rs.InsertRegion(&r)
 
 	regions, err := s.rs.ListRegions(10, 0)
 	s.NoError(err)
@@ -70,7 +70,7 @@ func (s *RegionStoreSuite) TestUpdateRegion() {
 	r1 := model.Region{
 		Name: "foo",
 	}
-	err := s.rs.PostRegion(&r1)
+	err := s.rs.InsertRegion(&r1)
 
 	region, err := s.rs.GetRegion(r1.ID)
 	s.NoError(err)

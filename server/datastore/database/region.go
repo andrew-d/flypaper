@@ -28,7 +28,7 @@ func (s *RegionStore) GetRegion(id int64) (*model.Region, error) {
 	return region, err
 }
 
-func (s *RegionStore) PostRegion(region *model.Region) error {
+func (s *RegionStore) InsertRegion(region *model.Region) error {
 	ret, err := s.db.Exec(RebindInsert(s.db, regionInsertQuery),
 		region.Name,
 		region.TestStart,

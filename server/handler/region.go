@@ -130,7 +130,7 @@ func PostRegion(c web.C, w http.ResponseWriter, r *http.Request) {
 		region.TestEnd.Int64 = *in.TestEnd
 	}
 
-	err := datastore.PostRegion(ctx, region)
+	err := datastore.InsertRegion(ctx, region)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return

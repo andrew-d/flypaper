@@ -10,5 +10,10 @@ build:
 		-ldflags "-X main.revision $(SHA) -X main.version $(VERSION)" \
 		./server
 
+test:
+	godep go test \
+	  -v \
+	  ./...
+
 clean:
 	$(RM) ./flypaper

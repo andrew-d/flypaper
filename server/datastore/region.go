@@ -14,8 +14,8 @@ type RegionStore interface {
 	// GetRegion retrieves a region from the datastore for the given ID.
 	GetRegion(id int64) (*model.Region, error)
 
-	// PostRegion saves a new region in the datastore.
-	PostRegion(region *model.Region) error
+	// InsertRegion saves a new region in the datastore.
+	InsertRegion(region *model.Region) error
 
 	// DeleteRegion removes a region from the datastore.
 	DeleteRegion(id int64) error
@@ -32,14 +32,14 @@ func GetRegion(c context.Context, id int64) (*model.Region, error) {
 	return FromContext(c).GetRegion(id)
 }
 
-func PostRegion(c context.Context, region *model.Region) error {
-	return FromContext(c).PostRegion(region)
+func InsertRegion(c context.Context, region *model.Region) error {
+	return FromContext(c).InsertRegion(region)
 }
 
 func DeleteRegion(c context.Context, id int64) error {
 	return FromContext(c).DeleteRegion(id)
 }
 
-func UpdateRegion(c context.Context, id int64) error {
-	return FromContext(c).UpdateRegion(id)
+func UpdateRegion(c context.Context, region *model.Region) error {
+	return FromContext(c).UpdateRegion(region)
 }
