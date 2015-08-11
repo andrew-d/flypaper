@@ -43,6 +43,21 @@
 			"Rev": "b4142c444a8941d0d92b0b7103a24df9cd815e42"
 		},
 		{
+			"ImportPath": "github.com/stretchr/testify/assert",
+			"Comment": "v1.0-19-g6fe8314",
+			"Rev": "6fe8314ce5ce27f43c9a510126279fdc5d5d38fc"
+		},
+		{
+			"ImportPath": "github.com/stretchr/testify/require",
+			"Comment": "v1.0-19-g6fe8314",
+			"Rev": "6fe8314ce5ce27f43c9a510126279fdc5d5d38fc"
+		},
+		{
+			"ImportPath": "github.com/stretchr/testify/suite",
+			"Comment": "v1.0-19-g6fe8314",
+			"Rev": "6fe8314ce5ce27f43c9a510126279fdc5d5d38fc"
+		},
+		{
 			"ImportPath": "github.com/tylerb/graceful",
 			"Comment": "v1.2.1",
 			"Rev": "ac9ebe4f1ee151ac1eeeaef32957085cba64d508"
