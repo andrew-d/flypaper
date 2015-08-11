@@ -12,6 +12,7 @@ func New() *web.Mux {
 	mux.Get("/api/regions", handler.ListRegions)
 	mux.Post("/api/regions", handler.PostRegion)
 	mux.Get("/api/regions/:region", handler.GetRegion)
+	mux.Put("/api/regions/:region", handler.PutRegion)
 	mux.Delete("/api/regions/:region", handler.DeleteRegion)
 
 	mux.Get("/api/hosts/:host", handler.GetHost)
