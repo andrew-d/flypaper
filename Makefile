@@ -12,8 +12,8 @@ build:
 
 test:
 	godep go test \
-	  -v \
-	  ./...
+		-v \
+		./...
 
 clean:
 	$(RM) ./flypaper
