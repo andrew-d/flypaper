@@ -57,6 +57,16 @@ func (s *RegionStore) DeleteRegion(id int64) error {
 	return err
 }
 
+func (s *RegionStore) UpdateRegion(region *model.Region) error {
+	_, err := s.db.Exec(s.db.Rebind(regionUpdateQuery),
+		region.Name,
+		region.TestStart,
+		region.TestEnd,
+		region.ID,
+	)
+	return err
+}
+
 const regionListQuery = `
 SELECT *
 FROM regions
@@ -83,5 +93,14 @@ VALUES (?, ?, ?)
 const regionDeleteQuery = `
 DELETE
 FROM regions
+WHERE id = ?
+`
+
+const regionUpdateQuery = `
+UPDATE regions
+SET
+ name = ?
+,test_start = ?
+,test_end = ?
 WHERE id = ?
 `

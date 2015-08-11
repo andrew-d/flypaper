@@ -19,6 +19,9 @@ type RegionStore interface {
 
 	// DeleteRegion removes a region from the datastore.
 	DeleteRegion(id int64) error
+
+	// UpdateRegion updates a region in the datastore.
+	UpdateRegion(region *model.Region) error
 }
 
 func ListRegions(c context.Context, limit, offset int) ([]*model.Region, error) {
